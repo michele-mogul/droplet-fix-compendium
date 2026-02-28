@@ -1,0 +1,61 @@
+{
+	"droplet" : {
+		"Titles" : {
+			"Transfer"						: "Transferir",
+			"Duplicate": "Duplicar",
+			"Amount": "Valor",
+			"All": "Todos",
+			
+			"accept": "Aceitar",
+			"abbort": "Cancelar"
+		},
+		
+		"ChatMessages": {
+			"ObjectTransfer" : {
+				"Item" : {
+					"Delete"				: "{UserName} transferiu um item de <b>{SourceName}</b> para <b>{TargetName}</b>:",
+					"NoDelete": "{UserName} deu um item para <b>{TargetName}</b>:"
+				}
+			}
+		},
+		
+		"Settings": {
+			"TransferChatMessage" : {
+				"name"						: "Mostrar transferência no chat",
+				"descrp": "Se uma mensagem deve ser mostrada no chat, mencionando o usuário, a origem e o destino das transferências de itens ao arrastar e soltar"
+			},
+			
+			"allowPlayerItemTransfer": {
+				"name"						: "Permitir transferência de item de jogador",
+				"descrp": "Se sim e para quem os jogadores estão autorizados a transferir o item",
+				"options": {
+					"no"					: "Não",
+					"ownedonly": "Apenas possuídos",
+					"playersonly": "Apenas jogadores",
+					"friendliesonly": "Apenas amigáveis",
+					"neutrals": "Neutros e Amigáveis"
+				}
+			},
+			
+			"deleteItemonTransfer": {
+				"name"						: "Excluir item na transferência",
+				"descrp": "Se o item for arrastado e solto de um outro inventário, ele deve ser removido no inventário de origem [pressione Alt para inverter]"
+			},
+			
+			"askTransferAmount": {
+				"name"						: "Perguntar o valor da transferência",
+				"descrp": "Se transferir mais de um item, abra um menu para definir o valor [pressione Ctrl para inverter]"
+			},
+			
+			"transferZeros": {
+				"name"						: "Transferir zeros",
+				"descrp": "Se a transferência de 0 itens deve criar um item com quantidade 0 no destino."
+			},
+			
+			"applytoSheetDrop": {
+				"name"						: "Aplicar configurações ao soltar itens nas fichas",
+				"descrp": "Se as configurações acima devem ser aplicadas ao soltar nas fichas de autor"
+			}
+		}
+	}
+}
