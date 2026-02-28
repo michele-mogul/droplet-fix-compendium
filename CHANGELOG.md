@@ -1,3 +1,6 @@
+## v2.1.5
+- Added Brazilian Portuguese translation (thanks to [Paulo “Faren” Henrique](https://github.com/FarenRavirar))
+
 ## v2.1.4
 - Fix for dungeon crawl classic system specific bug
 

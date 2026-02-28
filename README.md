@@ -17,7 +17,7 @@ This allows the GM to quickly transfer players from one scene to another by drag
 
 ### Languages:
 
-The module contains an English, and a German translation. If you want additional languages to be supported [let me know](https://github.com/Saibot393/droplet/issues).
+The module contains an English, a German, and a Brazilian Portuguese (thanks to [Paulo “Faren” Henrique](https://github.com/FarenRavirar)) translation. If you want additional languages to be supported [let me know](https://github.com/Saibot393/droplet/issues).
 
 ---
 
