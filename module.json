@@ -1,13 +1,16 @@
 {
-  "id": "droplet",
-  "title": "Droplet",
+  "id": "droplet-fix",
+  "title": "Droplet Fix",
   "description": "A small module to allow player to drop items and effects on other players tokens",
   "authors": [
     {
     "name": "saibot"
+    },
+    {
+    "name": "mogul"
     }
   ],
-  "version": "2.1.5",
+  "version": "2.1.6",
   "compatibility": {
     "minimum": "10",
     "verified": "13"
