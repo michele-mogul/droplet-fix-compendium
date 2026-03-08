@@ -81,11 +81,8 @@ class Dropletutils {
 
 		if (vActor) {
 			let vprevQuantity = pItem.system.quantity;
-			let vQuantity = pQuantity;
-
-			if (vQuantity < 0) {
-				vQuantity = vprevQuantity;
-			}
+			let vDeleteAll = pQuantity < 0;
+			let vQuantity = vDeleteAll ? vprevQuantity : pQuantity;
 
 			if (pCheckDropSavety && !systemutils.savetodeleteonsheetdrop(pItem)) {
 				console.log("[Droplet DEBUG] deleteItem: savetodeleteonsheetdrop returned false, skipping delete");
@@ -111,6 +108,13 @@ class Dropletutils {
 				}
 
 				return vdeleteQuantity;
+			}
+
+			// quantity is already 0 but we intended to delete all — remove the item document
+			if (vDeleteAll) {
+				console.log("[Droplet DEBUG] deleteItem: quantity already 0, deleting item document", {documentName: pItem.documentName, id: pItem.id});
+				vActor.deleteEmbeddedDocuments(pItem.documentName, [pItem.id]);
+				return 0;
 			}
 
 			console.log("[Droplet DEBUG] deleteItem: vQuantity is 0, no delete");
