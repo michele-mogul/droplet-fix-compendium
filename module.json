@@ -39,11 +39,10 @@
 	"scripts/helpers/SocketHandler.js",
 	"scripts/settings/DropletSettings.js"
   ],
-  "url": "https://github.com/Saibot393/droplet",
-  "download": "https://github.com/Saibot393/droplet/archive/refs/tags/v2.1.5.zip",
-  "manifest": "https://github.com/Saibot393/droplet/releases/latest/download/module.json",
-  "readme": "https://github.com/Saibot393/droplet/blob/main/README.md",
-  "changelog": "https://github.com/Saibot393/droplet/blob/main/CHANGELOG.md",
-  "bugs": "https://github.com/Saibot393/droplet/issues",
-  "allowBugReporter": true
+  "url": "https://github.com/michele-mogul/droplet-fix-compendium",
+  "download": "https://github.com/michele-mogul/droplet-fix-compendium/archive/refs/heads/main.zip",
+  "manifest": "https://raw.githubusercontent.com/michele-mogul/droplet-fix-compendium/main/module.json",
+  "readme": "https://github.com/michele-mogul/droplet-fix-compendium/blob/main/README.md",
+  "changelog": "https://github.com/michele-mogul/droplet-fix-compendium/blob/main/CHANGELOG.md",
+  "bugs": "https://github.com/michele-mogul/droplet-fix-compendium/issues"
 }
