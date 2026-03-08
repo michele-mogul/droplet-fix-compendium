@@ -150,8 +150,10 @@ class ItemDropManager {
 			let vRequestAmount = (pAmount == undefined) && pItem.system?.quantity > 1 && Boolean(game.settings.get(cModuleName, "askTransferAmount") ^ Boolean(pKeys.CTRL));
 			let vDeleteOrigin = pItem.actor && Boolean(game.settings.get(cModuleName, "deleteItemonTransfer") ^ Boolean(pKeys.ALT));
 
+			console.log("[Droplet DEBUG] manageTransferDeletion", {hasActor: !!pItem.actor, deleteSettingValue: game.settings.get(cModuleName, "deleteItemonTransfer"), altKey: pKeys.ALT, vDeleteOrigin, vRequestAmount, pCheckDropSavety});
+
 			let vAmount = pAmount ?? -1;
-			
+
 			if (vRequestAmount) {
 				let vTitle = vDeleteOrigin ? Translate("Titles.Transfer") : Translate("Titles.Duplicate");
 				
@@ -235,16 +237,22 @@ class ItemDropManager {
 			let vCall = async (pTargetItem) => {
 				Hooks.off("updateItem", vUpdateHook);
 				Hooks.off("createItem", vCreateHook);
-				
+
 				let vKeys = Dropletutils.functionKeys();
-				
+
+				console.log("[Droplet DEBUG] onSheetDrop vCall fired", {pTargetItem, isOwner: pTargetActor.isOwner, type: pData.type, uuid: pData.uuid});
+
 				if (pTargetActor.isOwner) {
 					if (pData.type == "Item") {
 						let vSourceItem = await fromUuid(pData.uuid);
-						
+
+						console.log("[Droplet DEBUG] vSourceItem", {vSourceItem, hasActor: !!vSourceItem?.actor, actorId: vSourceItem?.actor?.id, targetActorId: pTargetActor.id, sameActor: vSourceItem?.actor == pTargetActor});
+
 						if (vSourceItem) {
 							if (vSourceItem.actor && (vSourceItem.actor != pTargetActor)) {
 								let vSourceID = vSourceItem._stats?.compendiumSource ?? vSourceItem.getFlag("core", "sourceId");
+
+								console.log("[Droplet DEBUG] inside transfer block", {vSourceID, compendiumSource: vSourceItem._stats?.compendiumSource, flagSourceId: vSourceItem.getFlag("core", "sourceId")});
 
 								let vSourceAmount = vSourceItem.system.quantity;
 								
