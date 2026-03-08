@@ -244,11 +244,11 @@ class ItemDropManager {
 						
 						if (vSourceItem) {
 							if (vSourceItem.actor && (vSourceItem.actor != pTargetActor)) {
-								let vSourceID = vSourceItem.getFlag("core", "sourceId");
+								let vSourceID = vSourceItem._stats?.compendiumSource ?? vSourceItem.getFlag("core", "sourceId");
 
 								let vSourceAmount = vSourceItem.system.quantity;
 								
-								let vTargetItem = pTargetItem || pTargetActor?.items.filter(vItem => vItem.getFlag("core", "sourceId") == vSourceItem.uuid || (vSourceID && vItem.getFlag("core", "sourceId") == vSourceID)).pop(); //try to find last added matching item
+								let vTargetItem = pTargetItem || pTargetActor?.items.filter(vItem => { let vItemSourceID = vItem._stats?.compendiumSource ?? vItem.getFlag("core", "sourceId"); return vItemSourceID == vSourceItem.uuid || (vSourceID && vItemSourceID == vSourceID); }).pop(); //try to find last added matching item
 								
 								let vTransfered = await ItemDropManager.manageTransferDeletion(vSourceItem, vKeys, undefined, true);
 
