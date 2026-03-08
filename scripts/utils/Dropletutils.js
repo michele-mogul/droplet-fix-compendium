@@ -76,40 +76,47 @@ class Dropletutils {
 	//items
 	static deleteItem(pItem, pQuantity = -1, pCheckDropSavety = false) {
 		let vActor = pItem?.actor;
-		
+
+		console.log("[Droplet DEBUG] deleteItem called", {hasActor: !!vActor, pQuantity, pCheckDropSavety, itemId: pItem?.id, itemName: pItem?.name});
+
 		if (vActor) {
 			let vprevQuantity = pItem.system.quantity;
 			let vQuantity = pQuantity;
-			
+
 			if (vQuantity < 0) {
 				vQuantity = vprevQuantity;
 			}
-			
+
 			if (pCheckDropSavety && !systemutils.savetodeleteonsheetdrop(pItem)) {
+				console.log("[Droplet DEBUG] deleteItem: savetodeleteonsheetdrop returned false, skipping delete");
 				return Math.min(vprevQuantity, vQuantity);
 			}
-			
+
 			if (vQuantity > 0) {
 				let vContent = Dropletutils.containerContent(pItem);
 				if (vContent?.length) {
 					vContent.forEach(vItem => Dropletutils.deleteItem(vItem));
 				}
-				
+
 				let vdeleteQuantity = Math.min(vprevQuantity, vQuantity);
-				
+
 				if (vdeleteQuantity == vprevQuantity) {
 					//all items removed => delete
+					console.log("[Droplet DEBUG] deleteItem: deleting entire item", {documentName: pItem.documentName, id: pItem.id});
 					vActor.deleteEmbeddedDocuments(pItem.documentName, [pItem.id]);
 				}
 				else {
+					console.log("[Droplet DEBUG] deleteItem: reducing quantity", {from: vprevQuantity, by: vdeleteQuantity});
 					pItem.update({system : {quantity : vprevQuantity - vdeleteQuantity}});
 				}
-				
+
 				return vdeleteQuantity;
 			}
-			
+
+			console.log("[Droplet DEBUG] deleteItem: vQuantity is 0, no delete");
 			return 0;
 		}
+		console.log("[Droplet DEBUG] deleteItem: no actor, returning undefined");
 	} 
 	
 	static containerContent(pContainer) {
